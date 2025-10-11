@@ -1,12 +1,8 @@
 "use client";
+import { Cart } from "@/components/cart/cart";
+import { Catalog } from "@/components/catalog/catalog";
+import { Product } from "@/types/product";
 import { useState } from "react";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  count: number;
-}
 
 const PRODUCTS = [
   // Типа данны с бэка
@@ -18,6 +14,7 @@ const PRODUCTS = [
 
 export default function ShopPage() {
   const [cart, setCart] = useState<Product[]>([]);
+  const [message, setMessage] = useState("");
 
   const addToCart = (product: Product) => {
     const copyCart = [...cart];
@@ -43,38 +40,23 @@ export default function ShopPage() {
   }, 0);
 
   return (
-    <div>
-      <h1>Каталог</h1>
+    <div className="container">
+      <div className="shop">
+        <Catalog list={PRODUCTS} addItem={addToCart} />
+        <hr />
+        <Cart count={totalCount} list={cart} price={totalPrice} />
 
-      <ul>
-        {PRODUCTS.map((product) => {
-          return (
-            <li key={product.id}>
-              <span>{product.title}</span>
-              <span>{product.price}сом</span>
-              <button onClick={() => addToCart(product)}>Добавить в корзину</button>
-            </li>
-          );
-        })}
-      </ul>
-      <hr />
-
-      <div>
-        <h2>Корзина: {totalCount}</h2>
-
-        <ol>
-          {cart.map((product) => {
-            return (
-              <li key={product.id}>
-                <span>
-                  {product.title} x{product.count}
-                </span>
-              </li>
-            );
-          })}
-        </ol>
-
-        <p>Общая стоимость товара: {totalPrice}</p>
+        {cart.length !== 0 && (
+          <div className="message-wrap">
+            <h3>Примечания</h3>
+            <textarea
+              className="message"
+              placeholder="Примечение к заказу"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
