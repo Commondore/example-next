@@ -4,6 +4,8 @@ import { Catalog } from "@/components/catalog/catalog";
 import { Product } from "@/types/product";
 import { useState } from "react";
 
+import s from "./shop.module.css";
+
 const PRODUCTS = [
   // Типа данны с бэка
   { id: 1, title: "Капучино", price: 180, count: 0 },
@@ -41,7 +43,7 @@ export default function ShopPage() {
 
   return (
     <div className="container">
-      <div className="shop">
+      <div className={s.shop}>
         <Catalog list={PRODUCTS} addItem={addToCart} />
         <hr />
         <Cart count={totalCount} list={cart} price={totalPrice} />

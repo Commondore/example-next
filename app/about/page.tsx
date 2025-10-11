@@ -1,12 +1,10 @@
-import {Header} from "@/components/header/header";
-import {Greeting} from "@/components/greeting/greeting";
+import { Greeting } from "@/components/greeting/greeting";
 
 export default function AboutPage() {
-	return (
-		<>
-			<Header />
-			<Greeting pageName="О нас" />
-			<h1>About page</h1>
-		</>
-	)
+  return (
+    <>
+      <Greeting pageName="О нас" />
+      <h1>About page</h1>
+    </>
+  );
 }
