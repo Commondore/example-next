@@ -25,6 +25,9 @@ export const Header = () => {
         <Link className={s.link} href="/shop">
           Shop
         </Link>
+        <Link className={s.link} href="/notes">
+          Notes
+        </Link>
       </nav>
     </header>
   );
