@@ -28,6 +28,9 @@ export const Header = () => {
         <Link className={s.link} href="/notes">
           Notes
         </Link>
+        <Link className={s.link} href="/face">
+          Face Tracker
+        </Link>
       </nav>
     </header>
   );
